@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>城市·谛听 CityListen · 智慧城市声谱安防系统</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="城市谛听 CityListen">
+        <span aria-hidden="true">听</span>
+        <span><strong>城市·谛听</strong><em>CityListen</em></span>
+      </a>
+      <nav aria-label="页面导航">
+        <a href="#demo">演示</a>
+        <a href="#screens">界面</a>
+        <a href="#algorithm">算法</a>
+        <a href="#test">测试</a>
+      </nav>
+      <button class="header-login" id="loginBtn">打开平台</button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">城市级声学事件感知平台</p>
+          <h1>不是多一张地图，<br />而是给城市安防补上一只耳朵。</h1>
+          <p class="lead">
+            城市·谛听把公共拾音器、摄像头、半监督 SED 模型和 GIS 平台串联起来，形成“听到异常 → 地图预警 → 调取视频 → 形成摘要 → 统计复盘”的闭环。
+          </p>
+          <div class="actions">
+            <a class="button primary" id="enterAppBtn" href="#">进入平台演示</a>
+            <a class="button secondary" href="#demo">看演示脚本</a>
+          </div>
+          <dl class="metrics">
+            <div><dt>94.3%</dt><dd>真实场景平均检测正确率</dd></div>
+            <div><dt>&lt; 1s</dt><dd>音频采集到地图告警响应</dd></div>
+            <div><dt>5 色</dt><dd>红橙黄蓝绿城市风险分级</dd></div>
+          </dl>
+        </div>
+        <figure class="hero-shot">
+          <img src="assets/generated-acoustic-map.png" alt="城市声谱地图指挥界面示意图" />
+          <figcaption>
+            <strong>主演示画面</strong>
+            <span>GIS 声谱地图 + 实时告警热点 + 城市传感器节点</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section intro-grid" id="demo">
+        <div class="section-head align-left">
+          <p class="eyebrow">事件处置链路</p>
+          <h2>一条红色事件，贯穿监测、预警、联动与复盘。</h2>
+        </div>
+        <div class="storyline">
+          <article>
+            <span>01</span>
+            <h3>星河商业街出现尖叫呼救</h3>
+            <p>系统从实时音频流中识别“尖叫呼救”，输出置信度、持续时长、事件边界和点位编号。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>声谱地图弹出红色预警</h3>
+            <p>地图按五色等级显示风险范围，同时展示周边拾音器、摄像头和区域趋势。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>联动视频片段与音频波形</h3>
+            <p>用声音事件边界截取事前 8 秒、事件中、事后 12 秒视频片段，降低人工回看成本。</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>生成处置摘要和统计复盘</h3>
+            <p>事件进入日志、队列和历史统计，用于日/周报、区域高发分析和人力调度。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div>
+          <div class="section-head">
+            <p class="eyebrow">为什么不是普通监控大屏</p>
+            <h2>声音负责“先发现”，视频负责“看清楚”。</h2>
+          </div>
+          <p class="body-copy">
+            城市声学感知不是替代视频监控，而是补足视频“看不见、看不清、看不懂”的短板，让异常事件更早进入处置链路。
+          </p>
+          <div class="proof-cards">
+            <article><strong>看不见</strong><span>遮挡、视角和盲区导致画面缺失</span></article>
+            <article><strong>听得见</strong><span>异常声波具备全向传播和先发优势</span></article>
+            <article><strong>查得快</strong><span>声音边界直接定位视频回放片段</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="screens">
+        <div class="section-head">
+          <p class="eyebrow">平台界面展示</p>
+          <h2>四类界面，用胶囊和高卡片讲清楚。</h2>
+          <p>每类界面对应一个处置动作：定位风险、查看队列、联动回放、统计复盘。</p>
+        </div>
+        <div class="module-grid">
+          <article>
+            <span class="module-index">01</span>
+            <h3>城市声谱地图</h3>
+            <p>主视图按红、橙、黄、蓝、绿显示全城风险态势，点击事件点可查看点位、置信度、持续时长和周边设备。</p>
+            <div class="capsules"><span>事件点</span><span>五色等级</span><span>覆盖范围</span><span>周边摄像头</span></div>
+          </article>
+          <article>
+            <span class="module-index">02</span>
+            <h3>实时事件侧栏</h3>
+            <p>右侧按时间滚动写入事件队列，突出最高风险事件，管理者不用盯整张地图找异常。</p>
+            <div class="capsules"><span>红色置顶</span><span>时间排序</span><span>区域筛选</span><span>处置状态</span></div>
+          </article>
+          <article>
+            <span class="module-index">03</span>
+            <h3>音视频联动回放</h3>
+            <p>以声音事件边界为锚点，同步展示监控画面、音频波形、声谱片段和自动摘要，减少人工回看成本。</p>
+            <div class="capsules"><span>事前 8 秒</span><span>事件中</span><span>事后 12 秒</span><span>摘要留痕</span></div>
+          </article>
+          <article>
+            <span class="module-index">04</span>
+            <h3>历史统计复盘</h3>
+            <p>按区域、时间段、事件类型聚合，帮助管理者看出高发点和高发时段，调整巡防与设备布点。</p>
+            <div class="capsules"><span>日/周报</span><span>区域热度</span><span>事件趋势</span><span>人力调度</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="algorithm">
+        <div class="section-head">
+          <p class="eyebrow">核心算法能力</p>
+          <h2>半监督 SED 不是装饰词，要落到输入、训练和输出。</h2>
+        </div>
+        <div class="algorithm-cards">
+          <article><span>输入</span><strong>城市音频切片</strong><p>来自拾音器阵列和监控设备的秒级音频片段，带时间戳与点位编号。</p></article>
+          <article><span>训练</span><strong>少量强标签 + 大量无标签</strong><p>利用无标签数据生成伪标签，降低人工标注成本，适配真实城市噪声。</p></article>
+          <article><span>检测</span><strong>事件类别 + 边界定位</strong><p>输出爆炸、碰撞、呼救、人群聚集等事件及起止时间。</p></article>
+          <article><span>落地</span><strong>风险等级 + 地图联动</strong><p>检测结果进入事件库，触发五色预警、视频截取和处置记录。</p></article>
+        </div>
+      </section>
+
+      <section class="section test-section" id="test">
+        <div class="section-head align-left">
+          <p class="eyebrow">测试与可信度</p>
+          <h2>关键性能指标，直接对应城市现场响应。</h2>
+        </div>
+        <div class="test-grid">
+          <article><strong>94.3%</strong><span>平均检测正确率</span><p>真实场景下对敏感声音事件的平均识别效果。</p></article>
+          <article><strong>&lt;3%</strong><span>漏检率</span><p>降低爆炸、碰撞、呼救等高风险事件漏报概率。</p></article>
+          <article><strong>684ms</strong><span>模拟端到端响应</span><p>样例后端统计的检测、入库、地图更新平均时延。</p></article>
+          <article><strong>5 类</strong><span>演示事件</span><p>人群聚集、车辆碰撞、尖叫呼救、鸣笛、玻璃破碎。</p></article>
+        </div>
+      </section>
+
+      <section class="section workbench-section" id="workbench">
+        <div class="section-head">
+          <p class="eyebrow">可点击演示</p>
+          <h2>登录后进入模拟声谱地图工作台。</h2>
+          <p>工作台保留事件筛选、地图点位点击、事件详情、队列和模拟检测，用于完整演示异常事件处置流程。</p>
+        </div>
+        <button class="large-cta" id="bottomEnterBtn">打开演示工作台</button>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <strong>城市·谛听 CityListen</strong>
+      <span>声音事件检测 · 城市声谱地图 · 音视频联动 · 历史复盘</span>
+    </footer>
+
+    <div class="auth-modal" id="loginModal" hidden>
+      <div class="auth-backdrop" data-close></div>
+      <form class="auth-card" id="loginForm" autocomplete="off">
+        <button type="button" class="auth-x" data-close aria-label="关闭">×</button>
+        <div class="auth-brand"><span>听</span><strong>城市·谛听</strong></div>
+        <h3>登录声谱地图平台</h3>
+        <p>输入演示凭证后进入实时工作台。</p>
+        <label>用户名<input id="authUser" type="text" placeholder="请输入用户名" /></label>
+        <label>密码<input id="authPass" type="password" placeholder="请输入密码" /></label>
+        <p class="auth-err" id="authErr" hidden>用户名或密码错误</p>
+        <button class="auth-submit" type="submit">登 录</button>
+      </form>
+    </div>
+
+    <div class="app" id="app" hidden>
+      <header class="app-bar">
+        <div class="app-brand"><span>听</span>城市·谛听<em>声谱地图指挥台</em></div>
+        <span class="app-status"><i></i>实时监听中</span>
+        <button id="logoutBtn">退出</button>
+      </header>
+      <div class="app-body">
+        <aside class="side-panel">
+          <h4>区域筛选</h4>
+          <button class="filter active" data-level="all">全部事件</button>
+          <button class="filter" data-level="red">红色预警</button>
+          <button class="filter" data-level="orange">橙色预警</button>
+          <button class="filter" data-level="yellow">黄色预警</button>
+          <h4>实时指标</h4>
+          <dl class="live-kpis">
+            <div><dt>在线点位</dt><dd>128</dd></div>
+            <div><dt>今日事件</dt><dd>43</dd></div>
+            <div><dt>平均时延</dt><dd>0.68s</dd></div>
+            <div><dt>准确率</dt><dd>94.3%</dd></div>
+          </dl>
+          <button class="run-detect" id="detectBtn">模拟新事件检测</button>
+        </aside>
+
+        <main class="map-shell">
+          <section class="live-map-card">
+            <img src="assets/generated-acoustic-map.png" alt="声谱地图工作台背景" />
+          </section>
+
+          <section class="event-detail" id="eventDetail">
+            <div class="detail-head">
+              <span class="badge red" id="detailLevel">红色预警</span>
+              <strong id="detailTitle">星河商业街 · 尖叫呼救</strong>
+            </div>
+            <p id="detailText">置信度 0.912，持续 11.2s。已关联 CAM-08B 视频通道并生成处置摘要。</p>
+            <div class="replay-thumb">
+              <img src="assets/generated-replay-workstation.png" alt="音视频联动回放缩略图" />
+            </div>
+            <table>
+              <tbody>
+                <tr><th>事件编号</th><td id="detailId">E-240617-03</td></tr>
+                <tr><th>发生时间</th><td id="detailTime">2024-06-17 19:48:07</td></tr>
+                <tr><th>联动动作</th><td>地图弹窗、视频截取、日志入库、处置队列</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="history-panel">
+            <div>
+              <h4>事件趋势</h4>
+              <div class="bars"><i style="--h:24%"></i><i style="--h:40%"></i><i style="--h:32%"></i><i style="--h:56%"></i><i style="--h:72%"></i><i style="--h:100%"></i><i style="--h:64%"></i></div>
+            </div>
+            <div>
+              <h4>事件队列</h4>
+              <ul class="event-list" id="eventList"></ul>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const events = {
+        "E-240617-01": ["黄色预警", "评路图书馆北广场 · 人群聚集", "置信度 0.781，持续 18.4s。系统建议巡检人员到场观察。", "yellow", "2024-06-17 19:42:10"],
+        "E-240617-02": ["橙色预警", "江湾大道路口 · 车辆碰撞", "置信度 0.846，持续 7.8s。已联动 CAM-22C 回放并推送交通处置。", "orange", "2024-06-17 19:45:32"],
+        "E-240617-03": ["红色预警", "星河商业街 · 尖叫呼救", "置信度 0.912，持续 11.2s。已关联 CAM-08B 视频通道并生成处置摘要。", "red", "2024-06-17 19:48:07"],
+        "E-240617-04": ["蓝色预警", "市民公园东门 · 鸣笛", "置信度 0.632，持续 5.5s。进入持续观察队列。", "blue", "2024-06-17 19:50:41"],
+        "E-240617-05": ["橙色预警", "滨江隧道入口 · 玻璃破碎", "置信度 0.803，持续 4.6s。建议调取附近三路监控复核。", "orange", "2024-06-17 19:52:19"]
+      };
+
+      const $ = (s) => document.querySelector(s);
+      const modal = $("#loginModal");
+      const app = $("#app");
+      const openLogin = () => {
+        modal.hidden = false;
+        $("#authUser").value = "";
+        $("#authPass").value = "";
+        $("#authUser").focus();
+      };
+      const closeLogin = () => { modal.hidden = true; $("#authErr").hidden = true; };
+      $("#loginBtn").addEventListener("click", openLogin);
+      $("#enterAppBtn").addEventListener("click", (e) => { e.preventDefault(); openLogin(); });
+      $("#bottomEnterBtn").addEventListener("click", openLogin);
+      modal.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", closeLogin));
+      $("#loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        if ($("#authUser").value.trim() === "admin" && $("#authPass").value.trim() === "admin") {
+          closeLogin();
+          app.hidden = false;
+          document.body.style.overflow = "hidden";
+        } else {
+          $("#authErr").hidden = false;
+        }
+      });
+      $("#logoutBtn").addEventListener("click", () => {
+        app.hidden = true;
+        document.body.style.overflow = "";
+      });
+
+      function selectEvent(id) {
+        const item = events[id];
+        $("#detailLevel").textContent = item[0];
+        $("#detailLevel").className = "badge " + item[3];
+        $("#detailTitle").textContent = item[1];
+        $("#detailText").textContent = item[2];
+        $("#detailId").textContent = id;
+        $("#detailTime").textContent = item[4].replace("T", " ");
+      }
+
+      $("#eventList").innerHTML = Object.entries(events).map(([id, item]) => `<li data-id="${id}"><b class="${item[3]}"></b><span>${item[1]}</span><em>${item[0]}</em></li>`).join("");
+      $("#eventList").querySelectorAll("li").forEach((li) => li.addEventListener("click", () => selectEvent(li.dataset.id)));
+      $("#detectBtn").addEventListener("click", () => {
+        selectEvent("E-240617-03");
+        $("#detectBtn").textContent = "已生成红色预警";
+        setTimeout(() => { $("#detectBtn").textContent = "模拟新事件检测"; }, 1400);
+      });
+      document.querySelectorAll(".filter").forEach((btn) => btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach((x) => x.classList.remove("active"));
+        btn.classList.add("active");
+      }));
+    </script>
+  </body>
+</html>
