@@ -391,3 +391,586 @@ main { width: min(1240px, calc(100% - 32px)); margin: 0 auto; }
     gap: 6px;
   }
 }
+
+/* =======================================================================
+   交互样式 · NAV ACTIVE STATE
+   ======================================================================= */
+nav a.nav-active {
+  background: rgba(11, 79, 143, .12);
+  color: var(--teal);
+  font-weight: 900;
+}
+
+/* =======================================================================
+   交互样式 · METRIC VALUE ANIMATION
+   ======================================================================= */
+.metric-value {
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+/* =======================================================================
+   交互样式 · STORYLINE STEP-THROUGH
+   ======================================================================= */
+.storyline article[data-step] {
+  cursor: pointer;
+  transition: opacity 0.45s, transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+}
+.storyline article.step-active {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(11, 79, 143, .18), 0 18px 46px rgba(11, 79, 143, .12);
+  transform: translateY(-2px);
+}
+.storyline article.step-active span {
+  background: var(--teal);
+  color: #fff;
+}
+.storyline article.step-completed {
+  opacity: 0.78;
+}
+.storyline article.step-completed span {
+  background: var(--teal);
+  color: #fff;
+}
+.storyline article.step-upcoming {
+  opacity: 0.4;
+  filter: grayscale(0.3);
+  pointer-events: none;
+}
+.storyline-controls {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+.storyline-dots {
+  display: flex;
+  gap: 8px;
+}
+.storyline-dot {
+  width: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--line);
+  transition: background 0.3s, transform 0.3s;
+}
+.storyline-dot.active {
+  background: var(--teal);
+  transform: scale(1.4);
+}
+.storyline-dot.done {
+  background: rgba(11, 79, 143, .45);
+}
+.storyline-auto-btn {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 16px;
+  background: #fff;
+  color: var(--teal);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.storyline-auto-btn:hover {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+
+/* =======================================================================
+   交互样式 · SEARCH BOX
+   ======================================================================= */
+.search-box {
+  position: relative;
+  margin-bottom: 4px;
+}
+.search-box input {
+  width: 100%;
+  padding: 9px 32px 9px 12px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .04);
+  color: #dcecff;
+  font-size: 13px;
+  transition: border-color 0.25s;
+}
+.search-box input:focus {
+  border-color: rgba(98, 199, 255, .4);
+  outline: none;
+  background: rgba(255, 255, 255, .07);
+}
+.search-box input::placeholder {
+  color: rgba(234, 248, 241, .3);
+}
+.search-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, .35);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0 4px;
+  transition: color 0.2s;
+}
+.search-clear:hover { color: rgba(255, 255, 255, .8); }
+.search-count {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 11px;
+  color: rgba(234, 248, 241, .35);
+  min-height: 16px;
+}
+
+/* =======================================================================
+   交互样式 · MAP HOTSPOTS & ZOOM
+   ======================================================================= */
+.map-container {
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  width: 100%;
+  height: 100%;
+}
+.map-container img {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center center;
+  height: calc(100vh - 98px);
+  min-height: 560px;
+  object-fit: cover;
+}
+.map-hotspot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  z-index: 2;
+  padding: 0;
+  outline: none;
+}
+.map-hotspot:hover,
+.map-hotspot.active {
+  transform: translate(-50%, -50%) scale(1.7);
+  box-shadow: 0 0 0 10px rgba(98, 199, 255, .22);
+  background: #fff;
+  border-color: var(--green);
+}
+.map-hotspot.pulse-hotspot {
+  animation: hotspotPulse 0.5s ease 3;
+}
+@keyframes hotspotPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 0 rgba(239, 77, 50, .6); }
+  50% { transform: translate(-50%, -50%) scale(2); box-shadow: 0 0 0 14px rgba(239, 77, 50, 0); }
+}
+.map-tooltip {
+  position: absolute;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(8, 29, 54, .94);
+  border: 1px solid rgba(98, 199, 255, .2);
+  color: #eaf4ff;
+  font-size: 13px;
+  pointer-events: none;
+  z-index: 5;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  line-height: 1.5;
+}
+.map-tooltip strong { color: var(--green); }
+.map-zoom-controls {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  z-index: 4;
+}
+.map-zoom-controls button {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  background: rgba(8, 29, 54, .85);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.map-zoom-controls button:hover {
+  background: rgba(98, 199, 255, .25);
+}
+.zoom-label {
+  color: rgba(255, 255, 255, .5);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 0;
+}
+
+/* =======================================================================
+   交互样式 · TREND BAR TOOLTIPS
+   ======================================================================= */
+.bars { position: relative; }
+.bars i {
+  cursor: pointer;
+  transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.2s, opacity 0.2s;
+  position: relative;
+}
+.bars i:hover { filter: brightness(1.3); opacity: 0.85; }
+.bars i.selected {
+  background: linear-gradient(180deg, var(--amber), rgba(240, 165, 31, .35));
+  filter: brightness(1.1);
+}
+.bar-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(8, 29, 54, .96);
+  border: 1px solid rgba(98, 199, 255, .25);
+  color: #eaf4ff;
+  font-size: 12px;
+  font-style: normal;
+  white-space: nowrap;
+  z-index: 5;
+  pointer-events: none;
+}
+.bar-tooltip strong { color: var(--green); }
+
+/* =======================================================================
+   交互样式 · EVENT LIST ANIMATIONS
+   ======================================================================= */
+.event-list li {
+  transition: transform 0.35s ease, opacity 0.35s ease, background 0.2s;
+  cursor: pointer;
+}
+.event-list li:hover { background: rgba(255, 255, 255, .07); }
+.event-list li.event-active {
+  background: rgba(98, 199, 255, .1);
+  border: 1px solid rgba(98, 199, 255, .25);
+  margin: -1px;
+}
+.event-list li.new-event {
+  animation: slideIn 0.5s ease;
+  border-color: rgba(98, 199, 255, .35);
+}
+@keyframes slideIn {
+  from { transform: translateX(24px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.event-badge-new {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 900;
+  animation: badgeFade 5s ease forwards;
+  vertical-align: middle;
+}
+@keyframes badgeFade {
+  0%, 65% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.event-list-empty {
+  text-align: center;
+  padding: 32px 16px;
+  color: rgba(234, 248, 241, .3);
+  font-size: 14px;
+}
+
+/* =======================================================================
+   交互样式 · TOAST NOTIFICATIONS
+   ======================================================================= */
+.toast-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: rgba(8, 29, 54, .96);
+  border: 1px solid rgba(98, 199, 255, .2);
+  color: #eaf4ff;
+  font-size: 13px;
+  backdrop-filter: blur(12px);
+  animation: toastIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  max-width: 380px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .3);
+}
+.toast.warning {
+  border-color: rgba(239, 77, 50, .5);
+  box-shadow: 0 16px 48px rgba(239, 77, 50, .15);
+}
+.toast.success {
+  border-color: rgba(98, 199, 255, .5);
+}
+.toast-icon { font-size: 16px; flex-shrink: 0; }
+@keyframes toastIn {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes toastOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(120%); opacity: 0; }
+}
+
+/* =======================================================================
+   交互样式 · WAVEFORM
+   ======================================================================= */
+.waveform-container {
+  position: relative;
+  margin: 18px 0;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, .25);
+  padding: 10px;
+  overflow: hidden;
+}
+.waveform-container canvas {
+  width: 100%;
+  height: 120px;
+  display: block;
+  border-radius: 8px;
+}
+.waveform-playhead {
+  position: absolute;
+  top: 10px;
+  bottom: 66px;
+  width: 2px;
+  background: var(--red);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 6px rgba(239, 77, 50, .5);
+}
+.waveform-boundaries {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 2px;
+  font-size: 10px;
+  color: rgba(234, 248, 241, .35);
+  margin-top: 2px;
+}
+.waveform-boundaries .boundary-marker.active {
+  color: var(--green);
+  font-weight: 800;
+  font-size: 11px;
+}
+.waveform-play-btn {
+  margin-top: 8px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(98, 199, 255, .18);
+  border-radius: 10px;
+  background: rgba(98, 199, 255, .1);
+  color: var(--green);
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 13px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.waveform-play-btn:hover {
+  background: rgba(98, 199, 255, .2);
+  border-color: rgba(98, 199, 255, .4);
+}
+
+/* =======================================================================
+   交互样式 · EXPORT & SIM CONTROLS
+   ======================================================================= */
+.export-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.export-btn {
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .04);
+  color: #dcecff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background 0.2s, border-color 0.2s;
+}
+.export-btn:hover {
+  background: rgba(98, 199, 255, .15);
+  border-color: rgba(98, 199, 255, .3);
+}
+.sim-speed-group {
+  display: flex;
+  gap: 6px;
+  margin: 10px 0 0;
+}
+.sim-speed-btn {
+  flex: 1;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .04);
+  color: rgba(234, 248, 241, .5);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.sim-speed-btn.active,
+.sim-speed-btn:hover {
+  background: rgba(98, 199, 255, .16);
+  border-color: rgba(98, 199, 255, .3);
+  color: #fff;
+}
+.run-detect.sim-running {
+  background: var(--amber);
+  color: #0b1b33;
+}
+
+/* =======================================================================
+   交互样式 · EVENT DETAIL ENHANCEMENTS
+   ======================================================================= */
+.detail-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.disposition-badge {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+.disposition-badge:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .3);
+}
+.disposition-badge.badge-red { background: var(--red); }
+.disposition-badge.badge-orange { background: var(--amber); color: #241b00; }
+.disposition-badge.badge-green { background: #2ecc71; }
+.detail-icon-btn {
+  border: 0;
+  background: rgba(255, 255, 255, .06);
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.detail-icon-btn:hover { background: rgba(255, 255, 255, .15); }
+.replay-thumb { position: relative; }
+.video-frame-btn {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, .7);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+}
+.video-frame-btn:hover { background: rgba(0, 0, 0, .85); }
+.remark-box {
+  margin-top: 14px;
+}
+.remark-box label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: rgba(234, 248, 241, .5);
+  font-weight: 700;
+}
+.remark-box textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .04);
+  color: #dcecff;
+  font-size: 13px;
+  resize: vertical;
+  min-height: 50px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+.remark-box textarea:focus {
+  border-color: rgba(98, 199, 255, .3);
+  outline: none;
+}
+
+/* =======================================================================
+   交互样式 · SHAKE ANIMATION (LOGIN ERROR)
+   ======================================================================= */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(4px); }
+}
+
+/* =======================================================================
+   交互样式 · KPI VALUE PULSE
+   ======================================================================= */
+.kpi-value {
+  display: inline-block;
+  transition: color 0.6s, transform 0.4s;
+}
+.kpi-value.pulse-up {
+  color: var(--green);
+  transform: scale(1.12);
+}
+.kpi-value.pulse-down {
+  color: var(--red);
+  transform: scale(0.94);
+}
+
+/* =======================================================================
+   交互样式 · RESPONSIVE OVERRIDES (new elements)
+   ======================================================================= */
+@media (max-width: 980px) {
+  .storyline-controls { justify-content: center; }
+  .map-container img { height: auto; min-height: 0; }
+  .map-zoom-controls { bottom: 8px; right: 8px; }
+  .map-zoom-controls button { width: 26px; height: 26px; font-size: 14px; }
+  .toast-container { top: 60px; right: 10px; left: 10px; }
+  .toast { max-width: 100%; }
+  .waveform-container canvas { height: 80px; }
+  .detail-actions-bar { flex-wrap: wrap; }
+}
+@media (max-width: 560px) {
+  .export-group { grid-template-columns: 1fr; }
+  .sim-speed-group { flex-wrap: wrap; }
+  .storyline-dots { display: none; }
+}
