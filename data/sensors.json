@@ -1,0 +1,7 @@
+[
+  {"id": "S-001", "name": "评路图书馆北广场", "district": "文教区", "lat": 30.521, "lng": 114.362, "camera": "CAM-17A"},
+  {"id": "S-002", "name": "江湾大道路口", "district": "交通枢纽", "lat": 30.529, "lng": 114.372, "camera": "CAM-22C"},
+  {"id": "S-003", "name": "星河商业街", "district": "商业区", "lat": 30.514, "lng": 114.351, "camera": "CAM-08B"},
+  {"id": "S-004", "name": "市民公园东门", "district": "公共活动区", "lat": 30.536, "lng": 114.346, "camera": "CAM-31D"},
+  {"id": "S-005", "name": "滨江隧道入口", "district": "交通枢纽", "lat": 30.507, "lng": 114.381, "camera": "CAM-44A"}
+]

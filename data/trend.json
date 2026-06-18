@@ -1,0 +1,9 @@
+[
+  {"hour": "14:00", "events": 3},
+  {"hour": "15:00", "events": 5},
+  {"hour": "16:00", "events": 4},
+  {"hour": "17:00", "events": 7},
+  {"hour": "18:00", "events": 9},
+  {"hour": "19:00", "events": 13},
+  {"hour": "20:00", "events": 8}
+]

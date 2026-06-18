@@ -1,0 +1,7 @@
+[
+  {"id": "E-240617-01", "sensor_id": "S-001", "label": "人群聚集", "confidence": 0.781, "started_at": "2024-06-17T19:42:10", "duration": 18.4, "level": "yellow", "video_clip": "/clips/library-north-194210.mp4"},
+  {"id": "E-240617-02", "sensor_id": "S-002", "label": "车辆碰撞", "confidence": 0.846, "started_at": "2024-06-17T19:45:32", "duration": 7.8, "level": "orange", "video_clip": "/clips/jiangwan-crash-194532.mp4"},
+  {"id": "E-240617-03", "sensor_id": "S-003", "label": "尖叫呼救", "confidence": 0.912, "started_at": "2024-06-17T19:48:07", "duration": 11.2, "level": "red", "video_clip": "/clips/commercial-scream-194807.mp4"},
+  {"id": "E-240617-04", "sensor_id": "S-004", "label": "鸣笛", "confidence": 0.632, "started_at": "2024-06-17T19:50:41", "duration": 5.5, "level": "blue", "video_clip": "/clips/park-horn-195041.mp4"},
+  {"id": "E-240617-05", "sensor_id": "S-005", "label": "玻璃破碎", "confidence": 0.803, "started_at": "2024-06-17T19:52:19", "duration": 4.6, "level": "orange", "video_clip": "/clips/tunnel-glass-195219.mp4"}
+]
